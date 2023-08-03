@@ -95,10 +95,10 @@ class IftttSpider(scrapy.Spider):
         applets.sort()
 
         # output to file
-        with open("./applets/live_applets.txt", "w") as f:
+        with open("./data/live_applets.txt", "w") as f:
             for item in live_applets:
                 f.write("%s\n" % str(item))
 
-        with open("./applets/applets.txt", "w") as f:
+        with open("./data/applets.txt", "w") as f:
             for item in applets:
                 f.write("%s\n" % str(item))

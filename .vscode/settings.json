@@ -1,0 +1,11 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "database": "${workspaceFolder:IoT-CRI-Interpreter}/data/rules.db",
+            "name": "conn"
+        }
+    ],
+    "sqltools.useNodeRuntime": true
+}
