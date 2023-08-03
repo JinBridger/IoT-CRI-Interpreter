@@ -1,0 +1,49 @@
+Every hour at 00,then turn on the WemoPlug
+Every hour at 15,then turn on the WemoPlug
+Every hour at 30,then turn on the WemoPlug
+Every hour at 45,then turn on the Wemo switch
+Every hour at 45,then turn on the WemoPlug
+Get a notification when your battery is getting low
+Get an email when Webhooks publishes a new trigger or action
+Get the weather forecast every day at 7:00 AM
+If  sms Outlet switched on, then Turn on wemo
+If Every day at 10:45 AM, then Turn on wemo switch
+If Every hour at 00 minutes past the hour, then Send a notification from the IFTTT app
+If Maker Event "any_trigger", then turn on HS103(US) switch1
+If Maker Event "blink_philips", then Blink Philips
+If Maker Event "google_sheets", then Add row to yuchen zhao¡¯s Google Drive spreadsheet
+If Maker Event "motion_notification", then Send a notification from the IFTTT app
+If Maker Event "pro_hour", then Send a notification from the IFTTT app
+If Maker Event "smartthings_outlet_off", then Switch off SmartThings Outlet
+If Maker Event "smartthings_outlet_on", then Switch on SmartThings Outlet
+If Maker Event "test_wemo", then Toggle on/off wemo switch
+If Maker Event "toggle_philips", then Toggle Philips on/off
+If Maker Event "turn_off_then_on_wemo_smart_plug", then Turn off then on Wemo
+If Maker Event "turn_off_wemo_smart_plug", then Turn off Wemo
+If Maker Event "turn_off_wemo_switch", then turn off wemo switch
+If Maker Event "turn_on_then_off_wemo_smart_plug", then Turn on then off Wemo
+If Maker Event "turn_on_wemo_smart_plug", then Turn on Wemo
+If Maker Event "turn_on_wemo_switch", then Turn on wemo switch
+If Maker Event "wemo_opened", then Turn on Wemo
+If Motion is detected on Office Cam, then Add row to yuchenzhao219@gmail.com¡¯s Google Drive spreadsheet
+If Motion is detected on Wyze1, then Turn on wemo switch
+If Motion is detected on Wyze1, then Turn on wemo switch
+If Motion is detected on Wyze1, then Turn on wemo switch
+If Motion is detected on Wyze2, then Add row to yuchen zhao¡¯s Google Drive spreadsheet
+If New Ring detected at Front Door, then Toggle on/off wemo switch
+If New Ring detected at Front Door, then Toggle on/off wemo switch
+If New breaking news alert from Fox News, then Send a rich notification from the IFTTT app
+If Notification received, then Send a rich notification from the IFTTT app
+If Wemo Switched on, then Toggle your lights
+If Wemo Switched on, then turn off HS103(US) switch1
+If Wemo Switched on, then turn on HS103(US) switch1
+If Wemo Switched on, then turn on HS103(US) switch1
+If wemo Switched on, then Switch on SmartThings Outlet
+If wemo Switched on, when data between 7-10 p.m., then Switch on SmartThings Outlet
+If wemo switch Switched on, then Add row to yuchen zhao¡¯s Google Drive spreadsheet
+If wemo switch Switched on, then Switch on SmartThings Outlet
+If wemo switch Switched on, then Turn off wemo switch
+If wemo switch Switched on, then Turn on yeelight
+If wemo switch Switched on, then turn off Wyze1
+Text your lost Android phone to turn the ringer volume up 100%
+if open wemo, then toggle yeelight
