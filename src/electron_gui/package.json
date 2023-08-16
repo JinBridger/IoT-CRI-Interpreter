@@ -4,11 +4,13 @@
   "description": "A tool to grab and integrate IoT rules.",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "start": "npm run build && electron ./dist/main.js"
   },
   "author": "jinbridge",
   "license": "ISC",
   "devDependencies": {
+    "@types/node": "^20.5.0",
     "electron": "^26.0.0"
   }
 }
