@@ -2,7 +2,7 @@
   "name": "iot-cri-interpreter",
   "version": "1.0.0",
   "description": "A tool to grab and integrate IoT rules.",
-  "main": "main.js",
+  "main": "./dist/main.js",
   "scripts": {
     "build": "tsc",
     "start": "npm run build && electron ./dist/main.js"
