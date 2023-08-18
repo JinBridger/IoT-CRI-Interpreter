@@ -6,17 +6,28 @@ class IftttInitalizerParser:
         with open(json_file, "r") as f:
             self.input_data = json.load(f)
 
-    def parser(self, output_file: str) -> None:
-        self.output_data = [
-            {"module_name": item["module_name"]}
+    def parser(self, output_dir: str) -> None:
+        self.output_trigger_data = [
+            {"module_name": item["module_name"], "name": item["name"]}
             for item in self.input_data["preloadedServices"]
+            if item["public_triggers"] != []
         ]
-        output_str = json.dumps(self.output_data, indent=4)
+        self.output_action_data = [
+            {"module_name": item["module_name"], "name": item["name"]}
+            for item in self.input_data["preloadedServices"]
+            if item["public_actions"] != []
+        ]
+        output_trigger_str = json.dumps(self.output_trigger_data, indent=4)
+        output_action_str = json.dumps(self.output_action_data, indent=4)
 
-        with open(output_file, "w") as f:
-            f.write(output_str)
+        # with open(output_file, "w") as f:
+        #     f.write(output_str)
+        with open(output_dir + "trigger_device_names.json", "w") as f:
+            f.write(output_trigger_str)
+        with open(output_dir + "action_device_names.json", "w") as f:
+            f.write(output_action_str)
 
 
 if __name__ == "__main__":
     iip = IftttInitalizerParser("./data/output.json")
-    iip.parser("./data/device_name.json")
+    iip.parser("./data/electron_json/")
