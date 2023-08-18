@@ -1,6 +1,36 @@
 import { app, BrowserWindow, ipcMain } from "electron";
 import path = require("path");
 import { readJsonFile, searchModuleName } from "./json_loader";
+import { spawn } from "child_process";
+
+interface PythonArgs {
+  trigger_device: string;
+  trigger_condition: string;
+  action_device: string;
+  action_action: string;
+}
+
+function runPythonScript(args: PythonArgs): void {
+  const python = spawn("python", [
+    "../applet_executor/applet_executor.py",
+    args["trigger_device"],
+    args["trigger_condition"],
+    args["action_device"],
+    args["action_action"],
+  ]);
+
+  python.stdout.on("data", (data: Buffer) => {
+    console.log(`stdout: ${data.toString()}`);
+  });
+
+  python.stderr.on("data", (data: Buffer) => {
+    console.error(`stderr: ${data.toString()}`);
+  });
+
+  python.on("close", (code: number) => {
+    console.log(`child process exited with code ${code}`);
+  });
+}
 
 let win: BrowserWindow;
 let trigger_devices = readJsonFile(
@@ -28,8 +58,10 @@ app.whenReady().then(() => {
 });
 
 ipcMain.on("start_button_click", (event, arg) => {
-  console.log("button clicked!");
+  console.log("start!");
   console.log(arg);
+
+  runPythonScript(arg);
 });
 
 ipcMain.on("refresh_button_click", () => {

@@ -2,10 +2,11 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 import json
 import time
+import sys
 
 
 class AppletExecutor:
-    keys_path = "./keys/keys.json"
+    keys_path = "../../keys/keys.json"
 
     def __init__(self, infos: dict) -> None:
         self.trigger_device = infos["trigger_device"]
@@ -63,10 +64,10 @@ class AppletExecutor:
 
 if __name__ == "__main__":
     ad = {
-        "trigger_device": "test",
-        "trigger_condition": "A new thing was created",
-        "action_device": "test",
-        "action_action": "Create a new thing",
+        "trigger_device": sys.argv[1],
+        "trigger_condition": sys.argv[2],
+        "action_device": sys.argv[3],
+        "action_action": sys.argv[4],
     }
     ae = AppletExecutor(ad)
     ae.login()
