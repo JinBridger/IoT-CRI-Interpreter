@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 import json
 import time
 import sys
+from sqlite_interface import SqliteInterface
 
 
 class AppletExecutor:
@@ -18,6 +19,14 @@ class AppletExecutor:
             keys = json.load(f)
         self.email = keys["email"]
         self.password = keys["password"]
+
+        self.sql = SqliteInterface()
+        self.sql.add_applet(
+            self.trigger_device,
+            self.trigger_condition,
+            self.action_device,
+            self.action_action,
+        )
 
         self.driver = webdriver.Edge()
 

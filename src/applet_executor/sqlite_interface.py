@@ -4,12 +4,17 @@ import sqlite3
 class SqliteInterface:
     def __init__(self) -> None:
         # connect sqlite database
-        self.conn = sqlite3.connect("./data/rules.db")
+        self.conn = sqlite3.connect("../../data/rules.db")
         c = self.conn.cursor()
 
         c.execute("PRAGMA table_info(rule_table)")
         columns = c.fetchall()
-        required_columns = {"name", "if_field", "then_field"}
+        required_columns = {
+            "trigger_device",
+            "trigger_condition",
+            "action_device",
+            "action_action",
+        }
         actual_columns = {column[1] for column in columns}
 
         # check whether the database is valid
@@ -34,10 +39,39 @@ class SqliteInterface:
 
         # construct new content
         c.execute(
-            """CREATE TABLE rule_table(name text, if_field text, then_field text)"""
+            """CREATE TABLE rule_table(trigger_device text, trigger_condition text, action_device text, action_action text)"""
         )
+        self.conn.commit()
+
+    def query(self):
+        c = self.conn.cursor()
+        c.execute("SELECT * FROM rule_table")
+
+        rows = c.fetchall()
+
+        for row in rows:
+            print(row)
+
+    def add_applet(
+        self, trigger_device, trigger_condition, action_device, action_action
+    ):
+        c = self.conn.cursor()
+        c.execute(
+            "INSERT INTO rule_table VALUES ('"
+            + trigger_device
+            + "','"
+            + trigger_condition
+            + "','"
+            + action_device
+            + "','"
+            + action_action
+            + "')"
+        )
+
         self.conn.commit()
 
 
 if __name__ == "__main__":
-    sql: SqliteInterface()
+    sql = SqliteInterface()
+    sql.add_applet("a", "b", "c", "d")
+    # sql.query()
