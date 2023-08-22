@@ -25,12 +25,17 @@ function getAllSelects() {
     "action_action"
   ) as HTMLSelectElement;
 
+  let is_pro = document.getElementById("pro_chk") as HTMLInputElement;
+  let priority = document.getElementById("priority") as HTMLSelectElement;
+
   let return_obj = {
     trigger_device: trigger_device.options[trigger_device.selectedIndex].text,
     trigger_condition:
       trigger_condition.options[trigger_condition.selectedIndex].text,
     action_device: action_device.options[action_device.selectedIndex].text,
     action_action: action_action.options[action_action.selectedIndex].text,
+    is_pro: is_pro.checked,
+    priority: priority.options[priority.selectedIndex].text,
   };
 
   return return_obj;

@@ -14,6 +14,8 @@ class AppletExecutor:
         self.trigger_condition = infos["trigger_condition"]
         self.action_device = infos["action_device"]
         self.action_action = infos["action_action"]
+        self.is_pro = infos["is_pro"]
+        self.priority = infos["priority"]
 
         with open(self.keys_path, "r") as f:
             keys = json.load(f)
@@ -26,6 +28,8 @@ class AppletExecutor:
             self.trigger_condition,
             self.action_device,
             self.action_action,
+            self.is_pro,
+            self.priority,
         )
 
         self.driver = webdriver.Edge()
@@ -77,6 +81,8 @@ if __name__ == "__main__":
         "trigger_condition": sys.argv[2],
         "action_device": sys.argv[3],
         "action_action": sys.argv[4],
+        "is_pro": sys.argv[5],
+        "priority": sys.argv[6],
     }
     ae = AppletExecutor(ad)
     ae.login()

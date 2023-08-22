@@ -8,6 +8,8 @@ interface PythonArgs {
   trigger_condition: string;
   action_device: string;
   action_action: string;
+  is_pro: boolean;
+  priority: string;
 }
 
 function runPythonScript(args: PythonArgs): void {
@@ -17,6 +19,8 @@ function runPythonScript(args: PythonArgs): void {
     args["trigger_condition"],
     args["action_device"],
     args["action_action"],
+    String(args["is_pro"]),
+    args["priority"],
   ]);
 
   python.stdout.on("data", (data: Buffer) => {

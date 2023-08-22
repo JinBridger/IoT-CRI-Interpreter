@@ -14,6 +14,8 @@ class SqliteInterface:
             "trigger_condition",
             "action_device",
             "action_action",
+            "is_pro",
+            "priority",
         }
         actual_columns = {column[1] for column in columns}
 
@@ -39,7 +41,7 @@ class SqliteInterface:
 
         # construct new content
         c.execute(
-            """CREATE TABLE rule_table(trigger_device text, trigger_condition text, action_device text, action_action text)"""
+            """CREATE TABLE rule_table(trigger_device text, trigger_condition text, action_device text, action_action text, is_pro integer, priority integer)"""
         )
         self.conn.commit()
 
@@ -53,8 +55,18 @@ class SqliteInterface:
             print(row)
 
     def add_applet(
-        self, trigger_device, trigger_condition, action_device, action_action
+        self,
+        trigger_device,
+        trigger_condition,
+        action_device,
+        action_action,
+        is_pro,
+        priority,
     ):
+        if is_pro == "true":
+            is_pro = 1
+        else:
+            is_pro = 0
         c = self.conn.cursor()
         c.execute(
             "INSERT INTO rule_table VALUES ('"
@@ -65,7 +77,11 @@ class SqliteInterface:
             + action_device
             + "','"
             + action_action
-            + "')"
+            + "',"
+            + str(is_pro)
+            + ","
+            + str(priority)
+            + ")"
         )
 
         self.conn.commit()
@@ -73,5 +89,5 @@ class SqliteInterface:
 
 if __name__ == "__main__":
     sql = SqliteInterface()
-    sql.add_applet("a", "b", "c", "d")
+    sql.add_applet("a", "b", "c", "d", 1, 1)
     # sql.query()
